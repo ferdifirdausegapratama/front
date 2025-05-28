@@ -31,6 +31,9 @@ import SplashScreen from "./src/SplashScreen";
 import Login from "./src/Login";
 import Register from "./src/Register";
 import Home from "./src/Home";
+import Peserta from "./src/Peserta";
+import Jadwal from "./src/Jadwal";
+import EventForm from "./src/EventForm";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +48,9 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Peserta" component={Peserta} />
+        <Stack.Screen name="Jadwal" component={Jadwal} />
+        <Stack.Screen name="EventForm" component={EventForm} />
       </Stack.Navigator>
     </NavigationContainer>
   );
