@@ -34,6 +34,7 @@ import Home from "./src/Home";
 import Peserta from "./src/Peserta";
 import Jadwal from "./src/Jadwal";
 import EventForm from "./src/EventForm";
+import EventList from "./src/EventList";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default function App() {
         <Stack.Screen name="Peserta" component={Peserta} />
         <Stack.Screen name="Jadwal" component={Jadwal} />
         <Stack.Screen name="EventForm" component={EventForm} />
+        <Stack.Screen name="EventList" component={EventList} />
       </Stack.Navigator>
     </NavigationContainer>
   );

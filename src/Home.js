@@ -572,9 +572,39 @@ const Home = () => {
           />
           <Text style={styles.buttonText}>Form Jadwal</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("EventList")}
+          activeOpacity={0.7}
+        >
+          <Icon
+            name="list"
+            size={20}
+            color="#ffffff"
+            style={styles.buttonIcon}
+          />
+          <Text style={styles.buttonText}>Lihat Semua Kegiatan</Text>
+        </TouchableOpacity> */}
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={async () => {
+            try {
+              const token = await AsyncStorage.getItem("token");
+              if (!token) {
+                Alert.alert(
+                  "Error",
+                  "Sesi tidak valid. Silakan login kembali."
+                );
+                navigation.replace("Login");
+                return;
+              }
+              navigation.navigate("EventList");
+            } catch (err) {
+              console.error(err.message);
+              Alert.alert("Error", "Gagal mengakses data kegiatan.");
+            }
+          }}
           activeOpacity={0.7}
         >
           <Icon
