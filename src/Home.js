@@ -77,6 +77,17 @@
 //     }
 //   };
 
+//   const handleLogout = async () => {
+//     try {
+//       await AsyncStorage.removeItem("token");
+//       Alert.alert("Sukses", "Anda telah keluar dari akun");
+//       navigation.replace("Login");
+//     } catch (err) {
+//       console.log(err.message);
+//       Alert.alert("Error", "Gagal keluar dari akun");
+//     }
+//   };
+
 //   useEffect(() => {
 //     fetchUser();
 //   }, []);
@@ -84,7 +95,7 @@
 //   return (
 //     <View style={styles.container}>
 //       <View style={styles.card}>
-//         {/* Header dengan Tombol Kembali dan Profil */}
+//         {/* Header dengan Tombol Kembali, Profil, dan Keluar */}
 //         <View style={styles.header}>
 //           <TouchableOpacity
 //             style={styles.backButton}
@@ -94,13 +105,22 @@
 //             <Icon name="arrow-back" size={20} color="#ffffff" />
 //             <Text style={styles.backButtonText}>Kembali ke Login</Text>
 //           </TouchableOpacity>
-//           <TouchableOpacity
-//             style={styles.profileButton}
-//             onPress={() => setModalVisible(true)}
-//             activeOpacity={0.7}
-//           >
-//             <Icon name="account-circle" size={24} color="#4b5563" />
-//           </TouchableOpacity>
+//           <View style={styles.headerRight}>
+//             <TouchableOpacity
+//               style={styles.profileButton}
+//               onPress={() => setModalVisible(true)}
+//               activeOpacity={0.7}
+//             >
+//               <Icon name="account-circle" size={24} color="#4b5563" />
+//             </TouchableOpacity>
+//             <TouchableOpacity
+//               style={styles.logoutButton}
+//               onPress={handleLogout}
+//               activeOpacity={0.7}
+//             >
+//               <Icon name="logout" size={24} color="#4b5563" />
+//             </TouchableOpacity>
+//           </View>
 //         </View>
 
 //         <Text style={styles.title}>Dashboard</Text>
@@ -134,7 +154,7 @@
 //         </TouchableOpacity>
 //         <TouchableOpacity
 //           style={styles.button}
-//           onPress={() => navigation.navigate("Jadwal")}
+//           onPress={() => navigation.navigate("ScheduleForm")}
 //           activeOpacity={0.7}
 //         >
 //           <Icon
@@ -144,6 +164,49 @@
 //             style={styles.buttonIcon}
 //           />
 //           <Text style={styles.buttonText}>Form Jadwal</Text>
+//         </TouchableOpacity>
+//         {/* <TouchableOpacity
+//           style={styles.button}
+//           onPress={() => navigation.navigate("EventList")}
+//           activeOpacity={0.7}
+//         >
+//           <Icon
+//             name="list"
+//             size={20}
+//             color="#ffffff"
+//             style={styles.buttonIcon}
+//           />
+//           <Text style={styles.buttonText}>Lihat Semua Kegiatan</Text>
+//         </TouchableOpacity> */}
+
+//         <TouchableOpacity
+//           style={styles.button}
+//           onPress={async () => {
+//             try {
+//               const token = await AsyncStorage.getItem("token");
+//               if (!token) {
+//                 Alert.alert(
+//                   "Error",
+//                   "Sesi tidak valid. Silakan login kembali."
+//                 );
+//                 navigation.replace("Login");
+//                 return;
+//               }
+//               navigation.navigate("EventList");
+//             } catch (err) {
+//               console.error(err.message);
+//               Alert.alert("Error", "Gagal mengakses data kegiatan.");
+//             }
+//           }}
+//           activeOpacity={0.7}
+//         >
+//           <Icon
+//             name="list"
+//             size={20}
+//             color="#ffffff"
+//             style={styles.buttonIcon}
+//           />
+//           <Text style={styles.buttonText}>Lihat Semua Kegiatan</Text>
 //         </TouchableOpacity>
 
 //         {/* Modal Profil */}
@@ -287,7 +350,14 @@
 //     fontWeight: "600",
 //     marginLeft: 8,
 //   },
+//   headerRight: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//   },
 //   profileButton: {
+//     padding: 8,
+//   },
+//   logoutButton: {
 //     padding: 8,
 //   },
 //   title: {
@@ -502,7 +572,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        {/* Header dengan Tombol Kembali, Profil, dan Keluar */}
+        {/* Header dengan Tombol Kembali, Profil, Kredit, dan Keluar */}
         <View style={styles.header}>
           <TouchableOpacity
             style={styles.backButton}
@@ -519,6 +589,13 @@ const Home = () => {
               activeOpacity={0.7}
             >
               <Icon name="account-circle" size={24} color="#4b5563" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.creditsButton}
+              onPress={() => navigation.navigate("Credits")}
+              activeOpacity={0.7}
+            >
+              <Icon name="info" size={24} color="#4b5563" />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.logoutButton}
@@ -561,7 +638,7 @@ const Home = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Jadwal")}
+          onPress={() => navigation.navigate("ScheduleForm")}
           activeOpacity={0.7}
         >
           <Icon
@@ -572,20 +649,6 @@ const Home = () => {
           />
           <Text style={styles.buttonText}>Form Jadwal</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("EventList")}
-          activeOpacity={0.7}
-        >
-          <Icon
-            name="list"
-            size={20}
-            color="#ffffff"
-            style={styles.buttonIcon}
-          />
-          <Text style={styles.buttonText}>Lihat Semua Kegiatan</Text>
-        </TouchableOpacity> */}
-
         <TouchableOpacity
           style={styles.button}
           onPress={async () => {
@@ -762,6 +825,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   profileButton: {
+    padding: 8,
+  },
+  creditsButton: {
     padding: 8,
   },
   logoutButton: {
