@@ -625,7 +625,7 @@ const Home = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Peserta")}
+          onPress={() => navigation.navigate("TaskForm")}
           activeOpacity={0.7}
         >
           <Icon
@@ -634,11 +634,11 @@ const Home = () => {
             color="#ffffff"
             style={styles.buttonIcon}
           />
-          <Text style={styles.buttonText}>Form Peserta</Text>
+          <Text style={styles.buttonText}>Task Form</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("ScheduleForm")}
+          onPress={() => navigation.navigate("AssignmentForm")}
           activeOpacity={0.7}
         >
           <Icon
@@ -649,6 +649,7 @@ const Home = () => {
           />
           <Text style={styles.buttonText}>Form Jadwal</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.button}
           onPress={async () => {

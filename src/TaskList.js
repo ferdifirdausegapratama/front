@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native"; // ← penting untuk navigasi
+import { useNavigation } from "@react-navigation/native";
 
-const EventList = () => {
-  const [events, setEvents] = useState([]);
+const TaskList = () => {
   const [tasks, setTasks] = useState([]);
-  const [assignments, setAssignments] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [schedules, setSchedules] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -27,16 +27,19 @@ const EventList = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:3000/auth/events", {
+        const response = await axios.get("http://localhost:3000/auth/tasks", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
+        // setTasks(response.data?.tasks ?? []);
+        // setTeamMembers(response.data?.teamMembers ?? []);
+        // setSchedules(response.data?.schedules ?? []);
         console.log("Response data:", response.data); // Debugging
         setEvents(response.data?.events ?? []);
         setTasks(response.data?.tasks ?? []);
         setAssignments(response.data?.assignments ?? []);
       } catch (err) {
-        Alert.alert("Error", "Gagal memuat data kegiatan.");
+        Alert.alert("Error", "Gagal memuat data tugas.");
         console.error("Error:", err.message);
       }
     };
@@ -45,32 +48,13 @@ const EventList = () => {
   }, []);
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return "Tanggal tidak tersedia";
     const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return "Format tanggal tidak valid";
     return date.toLocaleDateString("id-ID", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
   };
-
-  const renderEmptyList = () => (
-    <Text style={styles.emptyText}>Tidak ada data tersedia</Text>
-  );
-
-  const renderEventItem = ({ item }) => (
-    <View style={styles.itemBox}>
-      <Text style={styles.itemTitle}>Nama Acara:</Text>
-      <Text>{item.namaAcara}</Text>
-      <Text style={styles.itemTitle}>Deskripsi:</Text>
-      <Text>{item.deskripsi}</Text>
-      <Text style={styles.itemTitle}>Lokasi:</Text>
-      <Text>{item.lokasi}</Text>
-      <Text style={styles.itemTitle}>Tanggal:</Text>
-      <Text>{formatDate(item.tanggal)}</Text>
-    </View>
-  );
 
   const renderTaskItem = ({ item }) => (
     <View style={styles.itemBox}>
@@ -85,18 +69,23 @@ const EventList = () => {
     </View>
   );
 
-  const renderAssignmentItem = ({ item }) => (
-    <View style={styles.itemBox}>
-      <Text style={styles.itemTitle}>Judul Tugas:</Text>
-      <Text>{item.judulTugas}</Text>
-      <Text style={styles.itemTitle}>Tenggat Waktu:</Text>
-      <Text>{formatDate(item.tenggatWaktu)}</Text>
-      <Text style={styles.itemTitle}>Mata Kuliah:</Text>
-      <Text>{item.mataKuliah}</Text>
-      <Text style={styles.itemTitle}>Catatan:</Text>
-      <Text>{item.catatan}</Text>
-    </View>
-  );
+  // const renderTeamMemberItem = ({ item }) => (
+  //   <View style={styles.itemBox}>
+  //     <Text style={styles.itemTitle}>Nama Anggota:</Text>
+  //     <Text>{item.namaAnggota}</Text>
+  //     <Text style={styles.itemTitle}>Email:</Text>
+  //     <Text>{item.email}</Text>
+  //   </View>
+  // );
+
+  // const renderScheduleItem = ({ item }) => (
+  //   <View style={styles.itemBox}>
+  //     <Text style={styles.itemTitle}>Waktu:</Text>
+  //     <Text>{item.waktu}</Text>
+  //     <Text style={styles.itemTitle}>Tempat:</Text>
+  //     <Text>{item.tempat}</Text>
+  //   </View>
+  // );
 
   return (
     <View style={styles.wrapper}>
@@ -180,14 +169,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
-    backgroundColor: "#6e6e6e", // Abu-abu elegan
-    elevation: 3, // memberi bayangan di Android
-    shadowColor: "#000", // memberi bayangan di iOS
+    backgroundColor: "#6e6e6e",
+    elevation: 3,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
-
   backButtonText: {
     color: "#fff",
     fontSize: 16,
@@ -195,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventList;
+export default TaskList;

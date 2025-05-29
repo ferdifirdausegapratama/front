@@ -31,10 +31,14 @@ import SplashScreen from "./src/SplashScreen";
 import Login from "./src/Login";
 import Register from "./src/Register";
 import Home from "./src/Home";
-import Peserta from "./src/Peserta";
+import Peserta from "./src/AssignmentForm";
 import EventForm from "./src/EventForm";
 import EventList from "./src/EventList";
 import Credits from "./src/Credits";
+import TaskForm from "./src/TaskForm";
+import TaskList from "./src/TaskList";
+import AssignmentForm from "./src/AssignmentForm";
+import AssignmentList from "./src/AssignmentList";
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +57,10 @@ export default function App() {
         <Stack.Screen name="EventForm" component={EventForm} />
         <Stack.Screen name="EventList" component={EventList} />
         <Stack.Screen name="Credits" component={Credits} />
+        <Stack.Screen name="TaskForm" component={TaskForm} />
+        <Stack.Screen name="TaskList" component={TaskList} />
+        <Stack.Screen name="AssignmentForm" component={AssignmentForm} />
+        <Stack.Screen name="AssignmentList" component={AssignmentList} />
       </Stack.Navigator>
     </NavigationContainer>
   );
