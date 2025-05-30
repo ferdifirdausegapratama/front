@@ -16,7 +16,10 @@ const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image source={require("../assets/favicon.png")} style={styles.image} />
+        <Image
+          source={require("../assets/MyAgenda.jpg")}
+          style={styles.image}
+        />
         <Text style={styles.title}>Welcome to MyApp</Text>
         <Text style={styles.subtitle}>Your journey starts here</Text>
       </View>
@@ -51,8 +54,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     marginBottom: 24,
-    borderRadius: 16,
   },
+
   title: {
     fontSize: 24,
     fontWeight: "700",

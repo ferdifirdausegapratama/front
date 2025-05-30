@@ -33,7 +33,7 @@ const Credits = () => {
             />
             <View style={styles.infoTextContainer}>
               <Text style={styles.infoLabel}>Nama Aplikasi</Text>
-              <Text style={styles.infoValue}>Event Manager</Text>
+              <Text style={styles.infoValue}>MyAgenda</Text>
             </View>
           </View>
 
@@ -48,7 +48,9 @@ const Credits = () => {
               />
               <View style={styles.developerTextContainer}>
                 <Text style={styles.developerLabel}>Pengembang 1</Text>
-                <Text style={styles.developerValue}>Rifky</Text>
+                <Text style={styles.developerValue}>
+                  Mochammad Rifky Andrianto
+                </Text>
                 <Text style={styles.developerNPM}>NPM: 22081010013</Text>
               </View>
             </View>
@@ -61,7 +63,9 @@ const Credits = () => {
               />
               <View style={styles.developerTextContainer}>
                 <Text style={styles.developerLabel}>Pengembang 2</Text>
-                <Text style={styles.developerValue}>Bamaramzy</Text>
+                <Text style={styles.developerValue}>
+                  Bamaramzy Rakan Faishal
+                </Text>
                 <Text style={styles.developerNPM}>NPM: 22081010056</Text>
               </View>
             </View>
@@ -74,7 +78,9 @@ const Credits = () => {
               />
               <View style={styles.developerTextContainer}>
                 <Text style={styles.developerLabel}>Pengembang 3</Text>
-                <Text style={styles.developerValue}>Ferdi</Text>
+                <Text style={styles.developerValue}>
+                  Ferdi Firdaus Ega Pratama
+                </Text>
                 <Text style={styles.developerNPM}>NPM: 22081010147</Text>
               </View>
             </View>
@@ -83,7 +89,7 @@ const Credits = () => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Versi 1.0.0</Text>
-          <Text style={styles.footerText}>© 2025 Event Manager Team</Text>
+          <Text style={styles.footerText}>© 2025 MyAgenda Team</Text>
         </View>
       </View>
     </View>

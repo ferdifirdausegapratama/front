@@ -608,7 +608,7 @@ const Home = () => {
         </View>
 
         <Text style={styles.title}>Dashboard</Text>
-        <Text style={styles.subtitle}>Kelola acara dan jadwal Anda</Text>
+        <Text style={styles.subtitle}>Kelola acara dan tugas Anda</Text>
 
         <TouchableOpacity
           style={styles.button}
@@ -634,7 +634,7 @@ const Home = () => {
             color="#ffffff"
             style={styles.buttonIcon}
           />
-          <Text style={styles.buttonText}>Task Form</Text>
+          <Text style={styles.buttonText}>Form Tugas Proyek</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
@@ -647,37 +647,7 @@ const Home = () => {
             color="#ffffff"
             style={styles.buttonIcon}
           />
-          <Text style={styles.buttonText}>Form Jadwal</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={async () => {
-            try {
-              const token = await AsyncStorage.getItem("token");
-              if (!token) {
-                Alert.alert(
-                  "Error",
-                  "Sesi tidak valid. Silakan login kembali."
-                );
-                navigation.replace("Login");
-                return;
-              }
-              navigation.navigate("EventList");
-            } catch (err) {
-              console.error(err.message);
-              Alert.alert("Error", "Gagal mengakses data kegiatan.");
-            }
-          }}
-          activeOpacity={0.7}
-        >
-          <Icon
-            name="list"
-            size={20}
-            color="#ffffff"
-            style={styles.buttonIcon}
-          />
-          <Text style={styles.buttonText}>Lihat Semua Kegiatan</Text>
+          <Text style={styles.buttonText}>Form Tugas Akademik</Text>
         </TouchableOpacity>
 
         {/* Modal Profil */}
