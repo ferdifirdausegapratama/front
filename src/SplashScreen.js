@@ -17,10 +17,10 @@ const SplashScreen = () => {
     <View style={styles.container}>
       <View style={styles.card}>
         <Image
-          source={require("../assets/MyAgenda.jpg")}
+          source={require("../assets/MyAgenda.png")}
           style={styles.image}
         />
-        <Text style={styles.title}>Welcome to MyApp</Text>
+        <Text style={styles.title}>Welcome to MyAgenda</Text>
         <Text style={styles.subtitle}>Your journey starts here</Text>
       </View>
     </View>
