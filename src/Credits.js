@@ -81,7 +81,7 @@ const Credits = () => {
                 <Text style={styles.developerValue}>
                   Ferdi Firdaus Ega Pratama
                 </Text>
-                <Text style={styles.developerNPM}>NPM: 22081010147</Text>
+                <Text style={styles.developerNPM}>NPM: 22081010247</Text>
               </View>
             </View>
           </View>
